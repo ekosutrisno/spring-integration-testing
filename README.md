@@ -43,7 +43,7 @@
           }
           ```
 
-- Get All Student
+- Delete Student
 
     - Method `DELETE`
     - path `/api/v1/students/{studentID}` => `studentId (number)`
