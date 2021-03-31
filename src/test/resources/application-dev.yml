@@ -1,0 +1,24 @@
+server:
+  port: 9901
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  application:
+    name: STUDENT SERVICES
+  datasource:
+    url: jdbc:postgresql://localhost:5433/integrations
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        fomat_sql: true
+
