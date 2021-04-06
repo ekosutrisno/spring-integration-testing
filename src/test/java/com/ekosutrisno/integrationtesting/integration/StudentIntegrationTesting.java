@@ -3,10 +3,10 @@ package com.ekosutrisno.integrationtesting.integration;
 import com.ekosutrisno.integrationtesting.entity.Gender;
 import com.ekosutrisno.integrationtesting.entity.Student;
 import com.ekosutrisno.integrationtesting.repository.StudentRepository;
+import com.ekosutrisno.integrationtesting.service.StudentService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -37,14 +37,12 @@ class StudentIntegrationTesting {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private StudentRepository studentRepository;
+    private StudentService studentService;
+
+    @Autowired
+    protected StudentRepository studentRepository;
 
     private final Faker faker = new Faker();
-
-    @BeforeEach
-    void setUp() {
-        studentRepository.deleteAll();
-    }
 
     @Test
     void canRegisterNewStudent() throws Exception {
@@ -71,7 +69,7 @@ class StudentIntegrationTesting {
 
         // Then
         resultActions.andExpect(status().isOk());
-        List<Student> students = studentRepository.findAll();
+        List<Student> students = studentService.getAllStudent();
         assertThat(students)
                 .usingElementComparatorIgnoringFields("id")
                 .contains(student);
