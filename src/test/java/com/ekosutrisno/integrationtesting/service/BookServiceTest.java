@@ -1,16 +1,13 @@
 package com.ekosutrisno.integrationtesting.service;
 
 import com.ekosutrisno.integrationtesting.entity.Book;
-import com.ekosutrisno.integrationtesting.entity.Student;
 import com.ekosutrisno.integrationtesting.exception.StudentNotFoundException;
 import com.ekosutrisno.integrationtesting.repository.BookRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.BDDMockito;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
@@ -18,9 +15,9 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Eko Sutrisno
